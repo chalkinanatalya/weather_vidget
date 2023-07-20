@@ -1,4 +1,4 @@
-import { getCurrentDateTime } from "./utils.js";
+import { calculateDewPoint, convertPressure, getCurrentDateTime, getWindDirection } from "./utils.js";
 
 export const renderWidgetToday = (widget, data) => {
     const {month, year, hours, minutes, dayOfWeek, dayOfMonth} = getCurrentDateTime();
@@ -29,22 +29,23 @@ export const renderWidgetToday = (widget, data) => {
 
 export const renderWidgetOther = (widget, data) => {
 console.log('data: ', data);
+
     widget.insertAdjacentHTML(
         'beforeend',
         `<div class="widget__other">
             <div class="widget__wind">
                 <p class="widget__wind-title">Ветер</p>
                 <p class="widget__wind-speed">${data.wind.speed} м/с</p>
-                <p class="widget__wind-text">&#8599;</p>
+                <p class="widget__wind-text">${getWindDirection(data.wind.deg)}</p>
             </div>
             <div class="widget__humidity">
                 <p class="widget__humidity-title">Влажность</p>
                 <p class="widget__humidity-value">${data.main.humidity}%</p>
-                <p class="widget__humidity-text">Т.Р: -0.2 °C</p>
+                <p class="widget__humidity-text">Т.Р: ${calculateDewPoint((data.main.temp - 273.15), data.main.humidity)}°C</p>
             </div>
             <div class="widget__pressure">
                 <p class="widget__pressure-title">Давление</p>
-                <p class="widget__pressure-value">${data.main.pressure}</p>
+                <p class="widget__pressure-value">${convertPressure(data.main.pressure)}</p>
                 <p class="widget__pressure-text">мм рт.ст.</p>
             </div>
       </div>`
