@@ -51,7 +51,6 @@ export const renderWidgetOther = (widget, data) => {
 }
 
 export const renderWidgetForecast = (widget, data) => {
-    console.log('data: ', data);
 
     const widgetForecast = document.createElement('ul');
     widgetForecast.className = 'widget__forecast';
