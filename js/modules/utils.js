@@ -2,28 +2,28 @@ const addZero = (n) =>  n < 10 ? n = `0${n}` : n;
 
 export const getCurrentDateTime = () => {
     const months = [
-        'янв',
-        'фев',
-        'мар',
-        'апр',
-        'май',
-        'июн',
-        'июл',
-        'авг',
-        'сен',
-        'окт',
-        'ноя',
-        'дек',
+        'jan',
+        'frb',
+        'mar',
+        'apr',
+        'may',
+        'jun',
+        'jul',
+        'aug',
+        'sep',
+        'oct',
+        'nov',
+        'dec',
     ];
 
     const weekdays = [
-        'воскресенье',
-        'понедельник',
-        'вторник',
-        'среда',
-        'четверг',
-        'пятница',
-        'суббота',
+        'sunday',
+        'monday',
+        'tuesday',
+        'wednesday',
+        'thursday',
+        'friday',
+        'saturday',
     ]
 
     const date = new Date();
@@ -67,13 +67,13 @@ export const getWeatherForecastData = (data) => {
     const forecastData = forecast.map((item) => {
         const date = new Date(item.dt_txt);
         const weekdaysShort = [
-            'вс',
-            'пн',
-            'вт',
-            'ср',
-            'чт',
-            'пт',
-            'сб',
+            'sun',
+            'mon',
+            'tue',
+            'wed',
+            'thu',
+            'fri',
+            'sat',
         ];
 
         const dayOfWeek = weekdaysShort[date.getDay()];
